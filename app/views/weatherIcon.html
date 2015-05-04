@@ -1,5 +1,5 @@
 <div>
-    {{weatherData.current.weather[0].id | weather}}
+    {{weatherData}}
     <!-- Weather Icon for clear or cloudy day -->
     <div ng-show="(weatherData.current.weather[0].id | weather) == 'clouds'">
         <ul ng-if="weatherData.current.clouds.all > 33 && weatherData.current.clouds.all < 70">
@@ -30,13 +30,13 @@
         </ul>
         <ul ng-if="weatherData.current.clouds.all >= 70">
             <li class="basecloud"></li>
-            <li class="icon-rain"></li>
+            <li class="icon-rainy"></li>
         </ul>
         <ul ng-if="weatherData.current.clouds.all <= 33">
             <li class="basecloud"></li>
             <li ng-class="['icon-rainy', {
                   'icon-night' : night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset), 
-                  'icon-sunny': !night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset)
+                  'icon-sunny' : !night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset)
                   }]">
             </li>
         </ul>
@@ -56,10 +56,32 @@
             <li class="icon-drizzle"></li>
         </ul>
         <ul ng-if="weatherData.current.clouds.all <= 33">
-            <li ng-class="{
+            <li ng-class="['icon-drizzle', {
                   'icon-moon' : night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset), 
                   'icon-sun': !night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset)
-                  }">
+                  }]">
+            </li>
+        </ul>
+    </div>
+    <!-- Weather Icon for a snowy day -->
+    <div ng-show="(weatherData.current.weather[0].id | weather) == 'snow'">
+        <ul ng-if="weatherData.current.clouds.all > 33 && weatherData.current.clouds.all < 70">
+            <li class="icon-cloud"></li>
+            <li ng-class="['icon-sunny', {
+                  'icon-night' : night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset), 
+                  'icon-sunny': !night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset)
+                  }]">
+            </li>
+        </ul>
+        <ul ng-if="weatherData.current.clouds.all >= 70">
+            <li class="basecloud"></li>
+            <li class="icon-snowy"></li>
+        </ul>
+        <ul ng-if="weatherData.current.clouds.all <= 33">
+            <li ng-class="['icon-snowy',{
+                  'icon-moon' : night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset), 
+                  'icon-sun': !night(weatherData.current.dt, weatherData.current.sys.sunrise, weatherData.current.sys.sunset)
+                  }]">
             </li>
         </ul>
     </div>
