@@ -10,7 +10,7 @@ angular.module('weatherApp')
     .directive('weatherIcon', function () {
         return {
             scope: {
-                weatherData: '='
+                obj: '='
             },
             templateUrl: 'views/weatherIcon.html',
             restrict: 'E',

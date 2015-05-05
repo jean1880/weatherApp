@@ -1,5 +1,5 @@
 <div>
-    {{weatherData}}
+    {{obj}}
     <!-- Weather Icon for clear or cloudy day -->
     <div ng-show="(weatherData.current.weather[0].id | weather) == 'clouds'">
         <ul ng-if="weatherData.current.clouds.all > 33 && weatherData.current.clouds.all < 70">
